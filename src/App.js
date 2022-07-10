@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+//component klasöründeki index.js dosyasının içinden geliyor .
+import { Navbar, Footer, Sidebar } from "./components";
+
+// pages klasöründe ki index.js içerisinden geliyor.. oraya bak.
+import {
+  Home,
+  SingleProduct,
+  Card,
+  Checkout,
+  Error,
+  About,
+  Products,
+  PrivateRoute,
+} from "./pages";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Navbar />
+        <Sidebar />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/card" element={<Card />} />
+          <Route exact path="/products" element={<Products />} />
+          <Route exact path="/products/:id" element={<SingleProduct />} />
+          <Route exact path="/checkout" element={<Checkout />} />
+          <Route exact path="/*" element={<Error />} />
+        </Routes>
+        <Footer/>
+      </Router>
     </div>
   );
 }
