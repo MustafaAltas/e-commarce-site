@@ -49,15 +49,15 @@ const Wrapper = styled.section`
 
 
 function ProductImages({images}) {
-  const [main,setMain] = useState(images[0]);
+  const [main,setMain] = useState(images && images[0]);  
   const selectImage = (Id) => {
     setMain(...images?.filter((item) => item.id === Id))
   }
-  console.log(images);
-  console.log(main);
+
   useEffect(() =>{
     console.log(main);
-  },[main])
+  },[main]);
+  
   return (
     <Wrapper>
       <img src={main?.url} alt="main_image" className='main' />

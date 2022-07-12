@@ -58,6 +58,7 @@ function SingleProductPage() {
   } = useProductsContext();
   useEffect(() => {
     fetchSingleProduct(`${url}${id}`);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   useEffect(() => {
@@ -66,6 +67,7 @@ function SingleProductPage() {
         navigate("/");
       }, 3000);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error]);
 
   if (loading) {
@@ -97,7 +99,7 @@ function SingleProductPage() {
           <ProductImages images={images}/>
           <section className="content">
             <h2>{name}</h2>
-            <Stars/>
+            <Stars stars={stars} reviews={reviews}/>
             <h5 className="price">
               {formatPrice(price)}
             </h5>
