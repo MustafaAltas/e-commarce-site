@@ -17,11 +17,25 @@ const Wrapper = styled.div`
   margin-bottom: 0.5rem;
 `;
 function Stars({ stars, reviews }) {
+  const ArrayStars = Array.from({length:5},(__,index) => {
+    const number = index + 0.5;
+    return(
+      <span key={index}>
+      {stars >= index + 1 ? (
+        <BsStarFill />
+      ) : stars >= number ? (
+        <BsStarHalf />
+      ) : (
+        <BsStar />
+      )}
+    </span>
+    )
+  })
   return (
     <Wrapper>
       <div className="stars">
-        {/* star */}
-        <span>
+        {ArrayStars}
+        {/* <span>
           {stars >= 1 ? (
             <BsStarFill />
           ) : stars >= 0.5 ? (
@@ -30,8 +44,8 @@ function Stars({ stars, reviews }) {
             <BsStar />
           )}
         </span>
-        {/* end of star */}
-        {/* star */}
+
+
         <span>
           {stars >= 2 ? (
             <BsStarFill />
@@ -41,8 +55,7 @@ function Stars({ stars, reviews }) {
             <BsStar />
           )}
         </span>
-        {/* end of star */}
-        {/* star */}
+
         <span>
           {stars >= 3 ? (
             <BsStarFill />
@@ -52,8 +65,7 @@ function Stars({ stars, reviews }) {
             <BsStar />
           )}
         </span>
-        {/* end of star */}
-        {/* star */}
+
         <span>
           {stars >= 4 ? (
             <BsStarFill />
@@ -63,8 +75,7 @@ function Stars({ stars, reviews }) {
             <BsStar />
           )}
         </span>
-        {/* end of star */}
-        {/* star */}
+
         <span>
           {stars === 5 ? (
             <BsStarFill />
@@ -73,8 +84,8 @@ function Stars({ stars, reviews }) {
           ) : (
             <BsStar />
           )}
-        </span>
-        {/* end of star */}
+        </span> */}
+
       </div>
       <p className="reviews">({reviews} customer reviews)</p>
     </Wrapper>
