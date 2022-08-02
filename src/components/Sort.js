@@ -66,7 +66,7 @@ const Wrapper = styled.section`
   }
 `
 function Sort() {
-  const {filtered_products:products,grid_view,setListView,setGridView} = useFilterContext()
+  const {filtered_products:products,grid_view,setListView,setGridView,updateSort} = useFilterContext()
   return (
     <Wrapper>
       <div className="btn-container">
@@ -81,7 +81,7 @@ function Sort() {
       <hr />
       <form action="">
         <label htmlFor="sort">sort by</label>
-        <select name="sort" id="sort" className='sort-input'>
+        <select name="sort" id="sort" className='sort-input' onChange={updateSort}>
           <option value="price-lowest">price (lowest)</option>
           <option value="price-highest">price (highest)</option>
           <option value="name-a">name (a-z)</option>

@@ -27,6 +27,41 @@ const filter_reducer = (state, action) => {
         ...state,
         grid_view : false
       }
+    case UPDATE_SORT:
+
+      return {
+        ...state,
+        sort : action.payload,
+
+      }
+    case SORT_PRODUCTS:
+      const {sort,filtered_products} = state;
+      let tempProducts = [...filtered_products];
+      switch (sort) {
+        case "price-lowest":
+          tempProducts = tempProducts.sort((a,b) => a.price - b.price);
+          break;
+        case "price-highest":
+           tempProducts = tempProducts.sort((a,b) => b.price - a.price);
+           break;
+        case "name-a":
+           tempProducts = tempProducts.sort((a,b) => {
+            return a.name.localeCompare(b.name)
+           });
+           break;
+        case "name-z":
+           tempProducts = tempProducts.sort((a,b) => {
+            return b.name.localeCompare(a.name)
+           });
+           break;
+        default:
+           break;
+      }
+      return{
+        ...state,
+        filtered_products:tempProducts,
+        
+      }
   
     default:
       break;
